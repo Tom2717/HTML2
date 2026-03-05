@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; padding: 80px 10%; align-items: start; }
+        .info-panel h2 { color: var(--primary); font-size: 2.5rem; }
+        .details { margin-top: 30px; }
+        .details p { font-size: 1.1rem; margin: 15px 0; display: flex; align-items: center; gap: 10px; }
+        .icon { color: var(--secondary); font-weight: bold; }
+        
+        @media (max-width: 800px) { .contact-container { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">CREATIVE</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="photo.html">Photo</a></li>
+            <li><a href="design.html">Design</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="contact-container">
+        <div class="info-panel fade-in">
+            <h2>Let's Connect</h2>
+            <p>I am currently a **Grade 11 student** looking for opportunities to collaborate on photography and design projects.</p>
+            
+            <div class="details">
+                <p><span class="icon">📧</span> 27pnguyen14@gmail.com</p>
+                <p><span class="icon">📞</span> xxxxxxxxxxx</p>
+                <p><span class="icon">📍</span> Available for local & remote work</p>
+            </div>
+        </div>
+
+        <div class="fade-in">
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="5" placeholder="Tell me about your project..."></textarea>
+                <button type="submit">SEND MESSAGE</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

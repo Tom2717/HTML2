@@ -1,0 +1,45 @@
+/* GLOBAL NAVIGATION FIX */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 25px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.nav-id {
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: #00f2ff;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none; /* Removes the dots */
+    display: flex;    /* Makes the menu horizontal */
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: 0.3s;
+    opacity: 0.7;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    opacity: 1;
+    color: #00f2ff;
+}

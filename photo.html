@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Album // TN</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { 
+            background: #000; 
+            color: #fff; 
+            margin: 0; 
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .album-header { padding: 120px 8% 60px; }
+        .album-header h1 { font-size: clamp(3rem, 10vw, 6rem); margin: 0; letter-spacing: -2px; text-transform: uppercase; }
+        .album-header p { color: #00f2ff; letter-spacing: 4px; font-size: 0.7rem; margin: 0; }
+
+        .album-container { padding: 0 8% 150px; }
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 60px;
+        }
+
+        /* --- THE POLAROID PRINT --- */
+        .photo-print {
+            position: relative;
+            background: #fdfdfd;
+            padding: 15px 15px 45px 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            transform: rotate(var(--rotation));
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            opacity: 0; /* Starts hidden for the reveal animation */
+            cursor: pointer;
+        }
+
+        .photo-print.reveal { opacity: 1; }
+
+        /* Tape Effect */
+        .photo-print::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-2deg);
+            width: 80px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255,255,255,0.1);
+            z-index: 2;
+        }
+
+        .photo-print:hover {
+            transform: rotate(0deg) scale(1.08) translateY(-20px) !important;
+            z-index: 100;
+            box-shadow: 0 30px 60px rgba(0, 242, 255, 0.2);
+        }
+
+        .photo-print img {
+            width: 100%;
+            height: 300px; /* Forces images to be the same height for a clean look */
+            object-fit: cover; /* Prevents stretching */
+            display: block;
+            filter: sepia(0.2) contrast(1.1);
+            transition: 0.5s;
+        }
+
+        .photo-print:hover img { filter: sepia(0) contrast(1); }
+
+        .photo-caption {
+            margin-top: 25px;
+            color: #1a1a1a;
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Rotations */
+        .photo-print:nth-child(1) { --rotation: -3deg; }
+        .photo-print:nth-child(2) { --rotation: 2deg; }
+        .photo-print:nth-child(3) { --rotation: -1deg; }
+        .photo-print:nth-child(4) { --rotation: 4deg; }
+        .photo-print:nth-child(5) { --rotation: -2.5deg; }
+        .photo-print:nth-child(6) { --rotation: 1.5deg; }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-id">TN // PHOTO_ALBUM</div>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="photo.html" class="active">PHOTO</a></li>
+            <li><a href="design.html">DESIGN</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <header class="album-header">
+        <h1>THE ALBUM</h1>
+        <p>DIGITAL_COLLECTION // VOL_01</p>
+    </header>
+
+    <main class="album-container">
+        <div class="album-grid">
+            
+            <div class="photo-print">
+                <img src="photo page/dog.jpeg">
+                <div class="photo-caption">DSC_001 // CANINE</div>
+            </div>
+
+            <div class="photo-print">
+                <img src="photo page/bluetree.jpeg">
+                <div class="photo-caption">DSC_002 // CYN_TREE</div>
+            </div>
+
+            <div class="photo-print">
+                <img src="photo page/mountain.jpeg">
+                <div class="photo-caption">DSC_003 // PEAK</div>
+            </div>
+
+            <div class="photo-print">
+                <img src="photo page/wheelchair.jpeg">
+                <div class="photo-caption">DSC_004 // STREET</div>
+            </div>
+
+            <div class="photo-print">
+                <img src="photo page/whiteflower.jpg">
+                <div class="photo-caption">DSC_005 // FLORA</div>
+            </div>
+
+            <div class="photo-print">
+                <img src="photo page/rung.png">
+                <div class="photo-caption">DSC_006 // RUNG_EXP</div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.photo-print').forEach(print => {
+            observer.observe(print);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Archive // TN</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { background: #000; color: #fff; margin: 0; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .album-header { padding: 120px 8% 60px; }
+        .album-header h1 { font-size: clamp(3rem, 10vw, 6rem); margin: 0; letter-spacing: -2px; text-transform: uppercase; }
+        .album-header p { color: #00f2ff; letter-spacing: 4px; font-size: 0.7rem; margin-top: 10px; }
+
+        .album-container { padding: 0 8% 150px; }
+        .design-stack { display: flex; flex-direction: column; gap: 100px; align-items: center; }
+
+        .design-print {
+            background: #fdfdfd;
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            transform: rotate(var(--rotation));
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            opacity: 0; /* Hidden until scroll */
+        }
+
+        .design-print.reveal { opacity: 1; }
+        .design-print:hover { transform: rotate(0deg) scale(1.02); z-index: 10; }
+
+        .design-print img {
+            width: 100%;
+            height: auto;
+            max-height: 600px; /* Prevents layout from looking "bad" or stretched */
+            object-fit: contain;
+            display: block;
+            background: #f0f0f0;
+        }
+
+        .design-info { margin-top: 20px; color: #1a1a1a; padding: 15px; border-top: 1px dashed #ccc; }
+        .design-info h2 { font-size: 1.2rem; margin: 0; text-transform: uppercase; }
+        .design-info p { font-family: 'Courier New', monospace; font-size: 0.85rem; margin-top: 10px; color: #444; }
+
+        /* Random rotations */
+        .design-print:nth-child(odd) { --rotation: -1.5deg; }
+        .design-print:nth-child(even) { --rotation: 1.5deg; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-id">TN // DESIGN_ALBUM</div>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="photo.html">PHOTO</a></li>
+            <li><a href="design.html" class="active">DESIGN</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <header class="album-header">
+        <h1>DESIGN WORK</h1>
+        <p>PROJECT_ARCHIVE // 2026</p>
+    </header>
+
+    <main class="album-container">
+        <div class="design-stack">
+            
+            <div class="design-print">
+                <img src="design page/natra.png">
+                <div class="design-info"><h2>NATRA</h2><p>// Character Architecture.</p></div>
+            </div>
+
+            <div class="design-print">
+                <img src="design page/naruto.png">
+                <div class="design-info"><h2>NARUTO</h2><p>// Illustration Study.</p></div>
+            </div>
+
+            <div class="design-print">
+                <img src="design page/motmau.png">
+                <div class="design-info"><h2>MOTMAU</h2><p>// Mono Experiment.</p></div>
+            </div>
+
+            <div class="design-print">
+                <img src="design page/chill.png">
+                <div class="design-info"><h2>CHILL</h2><p>// Visual Mood.</p></div>
+            </div>
+
+            <div class="design-print">
+                <img src="design page/dep.png">
+                <div class="design-info"><h2>DEP</h2><p>// Aesthetic Balance.</p></div>
+            </div>
+
+            <div class="design-print">
+                <img src="design page/sm.png">
+                <div class="design-info"><h2>SM_MODULE</h2><p>// System Design.</p></div>
+            </div>
+
+            <div class="design-print">
+                <img src="design page/son.png">
+                <div class="design-info"><h2>SON</h2><p>// Geometric Structure.</p></div>
+            </div>
+
+            <div class="design-print">
+                <img src="design page/xanh.png">
+                <div class="design-info"><h2>XANH</h2><p>// Color Branding.</p></div>
+            </div>
+
+            <div class="design-print">
+                <img src="design page/dai-quan-gia-la-ma-hoang.jpg">
+                <div class="design-info"><h2>DAI_QUAN_GIA</h2><p>// Digital Design.</p></div>
+            </div>
+
+            <div class="design-print">
+                <img src="design page/xe.png">
+                <div class="design-info"><h2>XE_ARCHIVE</h2><p>// Concept Art.</p></div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('reveal');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.design-print').forEach(print => observer.observe(print));
+    </script>
+</body>
+</html>
